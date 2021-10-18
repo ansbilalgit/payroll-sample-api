@@ -207,6 +207,7 @@ namespace Payroll_Api.Controllers
                 auth_token = token,
                 expiration_time = jwtToken.ValidTo.ToString(Constants.MobileDateTimeFormat),
                 issue_time = jwtToken.ValidFrom.ToString(Constants.MobileDateTimeFormat),
+                expires_in = (jwtToken.ValidTo - jwtToken.ValidFrom).TotalSeconds,
                 role = roles.FirstOrDefault()
             };
             return tokenResponse;
